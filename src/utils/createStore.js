@@ -12,7 +12,7 @@ import { routerMiddleware } from 'react-router-redux';
  const middleware = [thunk, logger];
  let store;
  if (__BROWSER__ && __DEV__) {
-   store = (reducers, history) => createStore(reducers, compose(
+   store = (reducers, history, initialState) => createStore(reducers, initialState, compose(
      applyMiddleware(...middleware, routerMiddleware(history)),
      (typeof window === 'object' && window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument())
    ));

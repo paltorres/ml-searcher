@@ -10,6 +10,7 @@
   </head>
   <body>
     <div id="content">${scope.markup || ''}</div>
+    <script>window.__INITIAL_STATE__ = ${JSON.stringify(scope.initialState)}</script>
     <script src="${scope.hostname}${scope.assets.client.js}"></script>
   </body>
 </html>

@@ -1,10 +1,11 @@
 /**
- * Created by Zhengfeng Yao on 16/8/27.
+ * The search reduce module.
+ *
+ * Import all reducers and put it all.
  */
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form'
-
 
 import app from './app';
 import searchReducer from '../components/SearchBar/reducer';

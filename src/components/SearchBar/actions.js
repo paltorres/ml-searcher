@@ -12,7 +12,7 @@ const { getItemList } = services;
 
 export default (term) => {
   const request = getItemList(term);
-  debugger;
+
   return (dispatch) => {
     dispatch(push(`/items?search=${term}`));
 

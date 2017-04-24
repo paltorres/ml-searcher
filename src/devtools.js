@@ -1,6 +1,3 @@
-/**
- * Created by Zhengfeng Yao on 16/8/27.
- */
 import React from 'react';
 import { createDevTools } from 'redux-devtools';
 import LogMonitor from 'redux-devtools-log-monitor';

@@ -1,15 +1,16 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { connect } from 'react-redux';
 
 
-const searchForm = ({handleSubmit}) => {
+let searchForm = ({handleSubmit, initialValue}) => {
     return (
         <form className="navbar-form" role="search" onSubmit={handleSubmit}>
             <div className="form-group">
                 <div className="input-group">
                     <label className="sr-only" htmlFor="searchInput">label</label>
                     <Field name="search" type="text"
-                           id="searchInput"
+                           id="searchInput" value={initialValue}
                            placeholder="Nunca dejes de buscar"
                            component="input" className="form-control" />
                     <button type="submit" className="input-group-addon">
@@ -25,8 +26,14 @@ const validate = ({term}) => {
     return !!term
 };
 
+function mapStateToProps(state, ownProps) {
+    return { initialValues: {search: ownProps.initSearch} }
+}
 
-export default reduxForm({
+searchForm = reduxForm({
     form: 'searchForm',
     validate
-})(searchForm)
+})(searchForm);
+
+
+export default connect(mapStateToProps)(searchForm);;

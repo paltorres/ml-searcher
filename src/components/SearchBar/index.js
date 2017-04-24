@@ -17,30 +17,17 @@ class SearchBar extends Component {
   constructor(props) {
     super(props);
 
-    const { term } = this.props;
-
-    this.state = { term };
-
     this.onSubmitForm = this.onSubmitForm.bind(this);
   }
-
+  // todo: remove this
   componentWillMount() {
     const { term } = this.props;
 
     if (term) this.props.searchItems(term);
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    return !_.isEqual(this.state, nextState);
-  }
-
   onSubmitForm({search}) {
     if (search) this.props.searchItems(search);
-  }
-
-  // Helper function.
-  onChangeHandler(e) {
-    this.setState({ term: e.target.value });
   }
 
   render() {
@@ -61,9 +48,9 @@ class SearchBar extends Component {
   }
 }
 
-function mapStateToProps(state, locationProps) {
+function mapStateToProps(state) {
   return {
-    term: _.get(state, 'routing.locationBeforeTransitions.location.search') // 'locationProps.location.search'
+    term: _.get(state, 'routing.locationBeforeTransitions.query.search') // 'locationProps.location.search'
   };
 }
 

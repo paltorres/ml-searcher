@@ -1,6 +1,3 @@
-/**
-  * Created by Zhengfeng Yao on 16/8/27.
-  */
 import 'babel-polyfill';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
@@ -31,7 +28,12 @@ let render = () => domReady(() => {
   ReactDOM.render(
     <Provider store={store}>
       <div>
-        <Router history={history}>
+        <Router history={history} onUpdate={() => {
+          if (window.__INITIAL_STATE__ !== null) {
+            window.__INITIAL_STATE__ = null;
+            return;
+          }
+        }}>
           {routes}
         </Router>
         {

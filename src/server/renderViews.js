@@ -2,13 +2,13 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext, createMemoryHistory } from 'react-router';
 import { Provider } from 'react-redux';
+import { syncHistoryWithStore } from 'react-router-redux';
+
 
 import { createStore } from '../utils';
 import reducers from '../reducers';
 import routes from '../routes';
 import DevTools from '../devtools';
-
-const store = createStore(createMemoryHistory())(reducers);
 
 
 function render(config) {
@@ -23,6 +23,12 @@ export default function init(server) {
       } else if (redirectLocation) {
         res.redirect(302, redirectLocation.pathname + redirectLocation.search);
       } else if (props) {
+        const history = createMemoryHistory(req.url);
+        const store = createStore(history)(reducers);
+
+        // sync the history with the store, to get the query params and the id's.
+        syncHistoryWithStore(history, store);
+
         const markup = renderToString(
           <Provider store={store}>
             <div>
@@ -33,7 +39,9 @@ export default function init(server) {
             </div>
           </Provider>
         );
-        res.send(render(Object.assign({markup}, server.config)));
+        const initialState = store.getState();
+
+        res.send(render(Object.assign({markup, initialState}, server.config)));
       } else {
         res.sendStatus(404);
       }

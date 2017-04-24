@@ -1,8 +1,12 @@
-/**
- * Created by Zhengfeng Yao on 16/8/27.
- */
-import Home from './home';
+import Home from './Home';
+import Searcher from './Searcher';
+import SearchResult from './Searcher/features/Result';
+import ItemDetail from './Searcher/features/Detail';
+
 
 export {
-  Home
+    Home,
+    Searcher,
+    SearchResult,
+    ItemDetail
 }
