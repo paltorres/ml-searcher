@@ -3,24 +3,38 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 
 
+const inlineStyle = {
+    display: 'inline'
+};
+
+const tableStyle = {
+    display: 'table'
+};
+
+const cursorStyle = {
+    cursor: 'pointer',
+    width: '1%'
+};
+
+
 let searchForm = ({handleSubmit, initialValue}) => {
     return (
         <form className="navbar-form" role="search" onSubmit={handleSubmit}>
-            <div className="form-group">
-                <div className="input-group">
-                    <label className="sr-only" htmlFor="searchInput">label</label>
+            <div className="form-group" style={inlineStyle}>
+                <div className="input-group" style={tableStyle}>
                     <Field name="search" type="text"
-                           id="searchInput" value={initialValue}
+                           id="searchInput"
                            placeholder="Nunca dejes de buscar"
                            component="input" className="form-control" />
-                    <button type="submit" className="input-group-addon">
+                    <span className="input-group-addon" onClick={handleSubmit} style={cursorStyle}>
                         <img src={require('../../../public/images/ic_Search.png')} alt=""/>
-                    </button>
+                    </span>
                 </div>
             </div>
         </form>
     )
 };
+
 
 const validate = ({term}) => {
     return !!term

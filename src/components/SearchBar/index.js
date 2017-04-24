@@ -32,15 +32,15 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-search">
+      <nav className="navbar navbar-search" role="navigation">
         <div className="container">
           <div className="navbar-header">
             <IndexLink className="navbar-brand" to="/">
               <img src={require('../../public/images/Logo_ML.png')} alt="Logo"/>
             </IndexLink>
           </div>
-          <div className="collapse navbar-collapse">
-            <SearchForm onSubmit={this.onSubmitForm}/>
+          <div className="navbar-collapse">
+            <SearchForm onSubmit={this.onSubmitForm} initSearch={this.props.term}/>
           </div>
         </div>
       </nav>

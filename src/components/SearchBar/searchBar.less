@@ -1,6 +1,29 @@
 @import "../../common";
 
+@media (max-width: @screen-sm) {
+  .navbar-search {
+    .navbar-brand {
+      width: 100%;
+
+      img {
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
 .navbar-search {
   background-color: @yellow;
   border-color: transparent;
+
+  .navbar-brand {
+    padding: 0;
+    margin-right: 5px;
+
+    img {
+      height: 100%;
+      padding: 10px;
+      width: auto;
+    }
+  }
 }
