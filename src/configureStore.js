@@ -1,10 +1,10 @@
-/**
-  * Created by Zhengfeng Yao on 16/8/29.
-  */
+import { browserHistory } from 'react-router';
+
 import { createStore } from './utils';
 import makeRootReducer from './reducers';
 
-const store = createStore(makeRootReducer);
+
+const store = createStore(makeRootReducer, browserHistory);
 
 if (module.hot) {
   module.hot.accept('./reducers', () => {

@@ -1,16 +1,15 @@
-/**
- * Created by Zhengfeng Yao on 16/8/27.
- */
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { match, RouterContext } from 'react-router';
+import { match, RouterContext, createMemoryHistory } from 'react-router';
 import { Provider } from 'react-redux';
+
 import { createStore } from '../utils';
 import reducers from '../reducers';
 import routes from '../routes';
 import DevTools from '../devtools';
 
-const store = createStore(reducers);
+const store = createStore(createMemoryHistory())(reducers);
+
 
 function render(config) {
   return require(`./views/default.est`)(config);

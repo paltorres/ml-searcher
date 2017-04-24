@@ -1,8 +1,10 @@
 /**
- * Created by Zhengfeng Yao on 16/8/27.
- */
+ * Action types module.
+ * */
+
 import composeConstants from './utils/composeConstants';
 
 module.exports = composeConstants({
-  APP: ['INIT']
+  APP: ['INIT'],
+  SERVICES: ['SEARCH_ITEMS']
 });

@@ -5,11 +5,13 @@ import 'babel-polyfill';
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import domReady from 'domready';
-import store from './configureStore';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+
 import DevTools from './devtools';
+import store from './configureStore';
+
 
 function windowHeight() {
   var de = document.documentElement;
@@ -64,7 +66,7 @@ if (__DEV__) {
     // Setup hot module replacement
     module.hot.accept('./routes', () => {
       setTimeout(() => {
-        ReactDOM.unmountComponentAtNode(MOUNT_NODE)
+        ReactDOM.unmountComponentAtNode(MOUNT_NODE);
         render();
       })
     })
