@@ -1,10 +1,12 @@
 import React from 'react';
 
+import Breadcrumb from '../../components/Breadcrumb';
+
 
 export default ({children}) => {
     return (
         <div>
-            <h2>child</h2>
+            <Breadcrumb />
             {children}
         </div>
     );

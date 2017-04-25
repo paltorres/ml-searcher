@@ -7,13 +7,13 @@ import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import { reducer as formReducer } from 'redux-form'
 
-import app from './app';
 import searchReducer from '../components/SearchBar/reducer';
+import breadcrumbReducer from '../components/Breadcrumb/reducer';
 
 
 export default combineReducers({
-  app,
   items: searchReducer,
+  categories: breadcrumbReducer,
   form: formReducer,
   routing: routerReducer,
 });

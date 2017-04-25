@@ -25,6 +25,7 @@ router.route('/').get((req, res) => {
   searchItems(q, (err, data) => {
     if (err) {
       console.error('Error searching items');
+      res.status(500).send(err.message);
       return err;
     }
     res.sendData(data);

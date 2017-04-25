@@ -3,15 +3,16 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import _ from 'lodash';
 
+import Item from './components/item';
+
 
 class SearchResult extends Component {
-    renderItem(itemProps) {
-        const {id, picture, title} = itemProps;
+    renderItemList(itemProps) {
+        const { id } = itemProps;
+
         return (
             <li key={id}>
-                <Link to="/">
-                    {title}
-                </Link>
+                <Item {...itemProps} />
             </li>
         )
     }
@@ -25,12 +26,13 @@ class SearchResult extends Component {
 
         return (
             <div>
-                {_.map(items, this.renderItem)}
+                {_.map(items, this.renderItemList)}
             </div>
         )
     }
 }
-
+/*                {_.map(items, this.renderItemList)}
+ */
 
 function mapStateToProps({items}) {
     return { items };

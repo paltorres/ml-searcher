@@ -1,0 +1,25 @@
+@import "../../common";
+
+@breadcrumb-separator: '>';
+@breadcrumb-padding-horizontal: 0;
+@breadcrumb-padding-vertical: 0;
+
+
+@breadcrumb-text-color: #999999;
+
+@breadcrumb-bg: @application-bg;
+@breadcrumb-active-color: #666666;
+@breadcrumb-color: @breadcrumb-text-color;
+
+
+.breadcrumb {
+  > li {
+    color: @breadcrumb-text-color;
+  }
+  .active {
+    font-weight: 600;
+    &::before {
+      font-weight: normal;
+    }
+  }
+}
