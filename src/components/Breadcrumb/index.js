@@ -9,7 +9,7 @@ class Breadcrumb extends Component {
     render() {
         const { categories } = this.props;
 
-        if (!categories) return <div></div>;
+        if (!categories || _.isEmpty(categories)) return <div></div>;
 
         return (
             <div>
