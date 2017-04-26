@@ -43,8 +43,14 @@ import { getPriceObject } from '../utils';
  *
  * */
 
+let mock;
+
 export default function searchItems(q, cb) {
   if (!q) return cb(null, {result: [], categories: []});
+
+  if(mock) {
+    return cb(null, mock);
+  }
 
   fetch(MELI_ROOT_URL + 'search?'+ stringify({q, limit: PRODUCT_LIMIT})).then((response) => {
     return response.json();
@@ -63,9 +69,10 @@ function parseResponse(data, cb) {
     result.items = _.map(data.results, (item) => {
       const {id, title, thumbnail, condition, shipping} = item,
         price = getPriceObject(item),
-        { free_shipping } = shipping;
+        { free_shipping } = shipping,
+        address = _.get(item, 'address.state_name');
 
-      return {id, title, condition, free_shipping, picture: thumbnail, price };
+      return {id, title, condition, free_shipping, address, picture: thumbnail, price };
     });
 
     var categoriesList = _.find(data.filters, {id: 'category'});
@@ -78,6 +85,7 @@ function parseResponse(data, cb) {
 
     result.categories = categoriesList || [];
 
+    mock = result;
     cb(null, result);
   } catch (e) {
     console.error(e);

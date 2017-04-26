@@ -1,8 +1,11 @@
+/**
+ * Searcher result component.
+ * */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router';
 import _ from 'lodash';
 
+import './search_result.less';
 import Item from './components/item';
 
 
@@ -10,11 +13,7 @@ class SearchResult extends Component {
     renderItemList(itemProps) {
         const { id } = itemProps;
 
-        return (
-            <li key={id}>
-                <Item {...itemProps} />
-            </li>
-        )
+        return <Item {...itemProps} key={id} />;
     }
 
     render() {
@@ -25,14 +24,12 @@ class SearchResult extends Component {
         }
 
         return (
-            <div>
+            <ol className="item-list list-unstyled">
                 {_.map(items, this.renderItemList)}
-            </div>
+            </ol>
         )
     }
 }
-/*                {_.map(items, this.renderItemList)}
- */
 
 function mapStateToProps({items}) {
     return { items };

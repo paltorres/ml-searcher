@@ -1,0 +1,50 @@
+@import "../../../../../common";
+
+@image-size: 180px;
+@row-tb-padding: 16px;
+@image-quadrant: @row-tb-padding * 2 + @image-size;
+
+.row-item {
+  padding-left: @image-quadrant;
+  padding-top: @row-tb-padding;
+  padding-bottom: @row-tb-padding;
+  padding-right: 40%;
+
+  border-bottom: 1px solid @application-bg;
+  position: relative;
+  min-height: @image-quadrant;
+
+  .cost-data {
+    margin-bottom: 32px;
+
+    .price {
+      font-size: 24px;
+      margin-right: 10px;
+    }
+  }
+
+  a.item-title {
+    text-decoration: none;
+    color: @text-color;
+    display: block;
+  }
+
+  .seller-address {
+    font-size: 12px;
+    position: absolute;
+    top: 60px;
+    right: 112px;
+  }
+
+  .thumbnail-item {
+    position: absolute;
+    top: @row-tb-padding;
+    left: @row-tb-padding;
+
+    img {
+      height: @image-size;
+      width: @image-size;
+      border-radius: @border-radius-base;
+    }
+  }
+}
