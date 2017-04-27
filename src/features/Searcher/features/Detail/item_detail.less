@@ -1,0 +1,49 @@
+@import "../../../../common";
+
+@picture-width: 680px;
+@base-separation: 32px;
+@frame-padding: 32px;
+@btn-primary-bg: #3483FA;
+
+
+.frame-container {
+  padding: @frame-padding;
+  background-color: #FFFFFF;
+  border-radius: @border-radius-base;
+
+  .item-data {
+    width: ~"calc(100% - @{picture-width})";
+    padding-left: 10%;
+
+    .item-price {
+      font-size: 46px;
+      position: relative;
+      display: block;
+      line-height: 1;
+      margin: @base-separation 0;
+    }
+    .item-title {
+      margin-top: 16px;
+      font-weight: 700;
+    }
+  }
+
+  .item-description {
+    width: @picture-width;
+    display: inline-block;
+
+    img {
+      width: 100%;
+    }
+
+    h3 {
+      font-size: 28px;
+      margin-top: @base-separation * 4;
+    }
+
+    .description-item-text {
+      font-size: 16px;
+      margin-top: @base-separation;
+    }
+  }
+}
