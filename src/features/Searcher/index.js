@@ -3,7 +3,7 @@ import React from 'react';
 import Breadcrumb from '../../components/Breadcrumb';
 
 
-export default ({children}) => {
+export default function Searcher({children}) {
     return (
         <div>
             <Breadcrumb />

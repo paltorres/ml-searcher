@@ -5,6 +5,5 @@
 import composeConstants from './utils/composeConstants';
 
 module.exports = composeConstants({
-  APP: ['INIT'],
-  SERVICES: ['SEARCH_ITEMS']
+  SERVICES: ['SEARCH_ITEMS', 'GET_ITEM_DETAIL']
 });

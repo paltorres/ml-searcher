@@ -25,7 +25,6 @@ export default function init(server) {
       } else if (props) {
         const history = createMemoryHistory(req.url);
         const store = createStore(history)(reducers);
-
         // sync the history with the store, to get the query params and the id's.
         syncHistoryWithStore(history, store);
 

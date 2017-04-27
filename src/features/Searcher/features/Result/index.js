@@ -13,7 +13,12 @@ class SearchResult extends Component {
     renderItemList(itemProps) {
         const { id } = itemProps;
 
-        return <Item {...itemProps} key={id} />;
+        return (
+          <div>
+              <Item {...itemProps} key={id} />
+              <hr className="item-separator"/>
+          </div>
+        );
     }
 
     render() {

@@ -9,11 +9,13 @@ import { reducer as formReducer } from 'redux-form'
 
 import searchReducer from '../components/SearchBar/reducer';
 import breadcrumbReducer from '../components/Breadcrumb/reducer';
+import { itemDetailReducer } from '../features/Searcher/features/Detail/actions'
 
 
 export default combineReducers({
   items: searchReducer,
   categories: breadcrumbReducer,
+  selectedItem: itemDetailReducer,
   form: formReducer,
   routing: routerReducer,
 });

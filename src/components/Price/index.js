@@ -12,13 +12,15 @@ import React, { Component } from 'react';
 import Currency from 'js-money/lib/currency';
 import accounting from 'accounting-js';
 
+import './price.less';
+
 
 const Price = (props) => {
   const moneyFormatted = moneyFormat(props.amount, props.currency);
 
   return (
     <span className={props.className}>{moneyFormatted} {props.showDecimals ?
-        <span className="decimals">{props.decimals}</span>
+        <span className="price-decimals">{props.decimals}</span>
       : ''}</span>
   )
 };

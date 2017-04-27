@@ -28,7 +28,8 @@ import { getPriceObject } from '../utils';
  *      },
  *      “picture”: String,
  *      "condition": String,
- *      "free_shipping": Boolean
+ *      "free_shipping": Boolean,
+ *      "address": String
  *    },
  *    {...},
  * }
@@ -48,7 +49,7 @@ let mock;
 export default function searchItems(q, cb) {
   if (!q) return cb(null, {result: [], categories: []});
 
-  if(mock) {
+  if(false) {
     return cb(null, mock);
   }
 

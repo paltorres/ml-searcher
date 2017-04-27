@@ -5,7 +5,12 @@
 import _ from 'lodash';
 
 import App from './app';
-import { Home, Searcher, SearchResult, ItemDetail } from './features';
+import {
+  Home,
+  Searcher,
+  SearchResult,
+  ItemDetail
+} from './features';
 
 
 const routes = {
@@ -24,7 +29,6 @@ const routes = {
          * redirect to index.
          * */
         onEnter: ({location}, replace) => {
-          console.log('HEEEEEEEEEEEEEEEEEEEEEEEEEEEEERE!')
           const searchQuery = _.get(location, 'query.search');
           if (!searchQuery) replace('/');
         },
@@ -33,7 +37,10 @@ const routes = {
       childRoutes: [
         {
           path: ':itemId',
-          component: ItemDetail
+          component: ItemDetail,
+          onEnter: () => {
+
+          }
         }
       ]
     }
@@ -41,3 +48,11 @@ const routes = {
 };
 
 export default routes;
+
+/**
+ * Helper function to run the fetchData function required per route.
+ *
+ * */
+function onUpdateRoute({routes, params}) {
+
+}
