@@ -45,8 +45,6 @@ export default function init(server) {
 
           res.send(render(Object.assign({markup, initialState}, server.config)));
         });
-      } else {
-        res.sendStatus(404);
       }
     });
   });
