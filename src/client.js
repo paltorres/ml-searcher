@@ -5,9 +5,11 @@ import domReady from 'domready';
 import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+import _ from 'lodash';
 
 import DevTools from './devtools';
 import store from './configureStore';
+import { fetchDataForRoutes } from './utils';
 
 
 function windowHeight() {
@@ -28,12 +30,7 @@ let render = () => domReady(() => {
   ReactDOM.render(
     <Provider store={store}>
       <div>
-        <Router history={history} onUpdate={() => {
-          if (window.__INITIAL_STATE__ !== null) {
-            window.__INITIAL_STATE__ = null;
-            return;
-          }
-        }}>
+        <Router history={history} onUpdate={onUpdate}>
           {routes}
         </Router>
         {
@@ -63,7 +60,7 @@ if (__DEV__) {
       } catch (error) {
         renderError(error);
       }
-    }
+    };
 
     // Setup hot module replacement
     module.hot.accept('./routes', () => {
@@ -79,3 +76,20 @@ if (__DEV__) {
 // Go!
 // ========================================================
 render();
+
+/**
+ * Helper function to run the fetchData function required per route.
+ *
+ * */
+function onUpdate() {
+  if (window.__INITIAL_STATE__ !== null) {
+    window.__INITIAL_STATE__ = null;
+    return;
+  }
+
+  fetchDataForRoutes(this.state).then((actionArray) => {
+    return _.forEach(actionArray, (actionObj) => {
+      store.dispatch(actionObj);
+    })
+  });
+}

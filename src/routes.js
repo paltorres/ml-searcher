@@ -11,6 +11,7 @@ import {
   SearchResult,
   ItemDetail
 } from './features';
+import * as actionServices from './actions/services';
 
 
 const routes = {
@@ -32,15 +33,14 @@ const routes = {
           const searchQuery = _.get(location, 'query.search');
           if (!searchQuery) replace('/');
         },
+        fetchData: [actionServices.searchItems],
         component: SearchResult
       },
       childRoutes: [
         {
           path: ':itemId',
           component: ItemDetail,
-          onEnter: () => {
-
-          }
+          fetchData: [actionServices.fetchItem]
         }
       ]
     }
@@ -48,11 +48,3 @@ const routes = {
 };
 
 export default routes;
-
-/**
- * Helper function to run the fetchData function required per route.
- *
- * */
-function onUpdateRoute({routes, params}) {
-
-}

@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import renderHTML from 'react-render-html';
 import { Link } from 'react-router';
 
-import { getItemDetail } from './actions';
+// import { getItemDetail } from './actions';
 import Price from '../../../../components/Price';
 import './item_detail.less';
 
 
 class ItemDetail extends Component {
     componentWillMount() {
-        const { itemId } = this.props.params;
+        // const { itemId } = this.props.params;
 
-        this.props.getItemDetail(itemId);
+        // this.props.getItemDetail(itemId);
     }
 
     renderExtraData() {
@@ -46,11 +46,11 @@ class ItemDetail extends Component {
         return (
           <div className="frame-container">
               <div className="item-description">
-                <img src={item.picture} alt={item.title} className="item-picture"/>
+                <img src={item.picture || ''} alt={item.title} className="item-picture"/>
 
                 <h3>Descripción del producto</h3>
                 <div className="description-item-text">
-                  {renderHTML(item.description)}
+                  {renderHTML(item.description || '')}
                 </div>
               </div>
               <div className="item-data pull-right">
@@ -65,4 +65,4 @@ function mapStateToProps(state) {
     return {item: state.selectedItem};
 }
 
-export default connect(mapStateToProps, { getItemDetail })(ItemDetail);
+export default connect(mapStateToProps, /*{ getItemDetail }*/)(ItemDetail);

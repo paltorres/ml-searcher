@@ -1,9 +1,15 @@
-const defaultFetchData = () => Promise.resolve();
+import _ from 'lodash';
 
-function fetchDataForRoute({ routes, params }) {
+const defaultFetchData = [];
+
+function fetchDataForRoute(state) {
+  const { routes } = state;
   const matchedRoute = routes[routes.length - 1];
   const fetchDataHandler = matchedRoute.fetchData || defaultFetchData;
-  return fetchDataHandler(params);
+
+  return Promise.all(_.map(fetchDataHandler, (req) => {
+    return req(state);
+  }));
 }
 
 export default fetchDataForRoute;

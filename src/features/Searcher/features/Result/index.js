@@ -14,8 +14,8 @@ class SearchResult extends Component {
         const { id } = itemProps;
 
         return (
-          <div>
-              <Item {...itemProps} key={id} />
+          <div key={id}>
+              <Item {...itemProps} />
               <hr className="item-separator"/>
           </div>
         );

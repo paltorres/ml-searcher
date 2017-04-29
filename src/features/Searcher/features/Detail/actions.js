@@ -3,6 +3,7 @@ import { SERVICES } from '../../../../actionTypes';
 
 
 const { getItem } = services;
+/*
 
 export function getItemDetail(id) {
   return (dispatch) => {
@@ -14,10 +15,11 @@ export function getItemDetail(id) {
     })
   }
 }
+*/
 
 export function itemDetailReducer(state=null, action) {
   switch (action.type) {
-    case SERVICES.GET_ITEM_DETAIL:
+    case SERVICES.FETCHED_ITEM:
       return action.payload.item;
   }
   return state;

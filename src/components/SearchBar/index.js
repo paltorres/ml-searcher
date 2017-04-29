@@ -20,11 +20,13 @@ class SearchBar extends Component {
     this.onSubmitForm = this.onSubmitForm.bind(this);
   }
   // todo: remove this
+/*
   componentWillMount() {
     const { term } = this.props;
 
     if (term) this.props.searchItems(term);
   }
+*/
 
   onSubmitForm({search}) {
     if (search) this.props.searchItems(search);
