@@ -9,7 +9,7 @@ import { reducer as formReducer } from 'redux-form'
 
 import searchReducer from '../components/SearchBar/reducer';
 import breadcrumbReducer from '../components/Breadcrumb/reducer';
-import { itemDetailReducer } from '../features/Searcher/features/Detail/actions'
+import { itemDetailReducer } from '../features/Searcher/features/Detail/reducers'
 
 
 export default combineReducers({

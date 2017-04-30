@@ -1,20 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import renderHTML from 'react-render-html';
 import { Link } from 'react-router';
 
-// import { getItemDetail } from './actions';
 import Price from '../../../../components/Price';
 import './item_detail.less';
 
 
 class ItemDetail extends Component {
-    componentWillMount() {
-        // const { itemId } = this.props.params;
-
-        // this.props.getItemDetail(itemId);
-    }
-
     renderExtraData() {
       const { item } = this.props,
             { price } = item;
@@ -50,7 +42,7 @@ class ItemDetail extends Component {
 
                 <h3>Descripción del producto</h3>
                 <div className="description-item-text">
-                  {renderHTML(item.description || '')}
+                  <div dangerouslySetInnerHTML={{__html: item.description || ''}}></div>
                 </div>
               </div>
               <div className="item-data pull-right">
@@ -65,4 +57,4 @@ function mapStateToProps(state) {
     return {item: state.selectedItem};
 }
 
-export default connect(mapStateToProps, /*{ getItemDetail }*/)(ItemDetail);
+export default connect(mapStateToProps)(ItemDetail);

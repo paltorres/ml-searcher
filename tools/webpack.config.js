@@ -1,6 +1,3 @@
-/**
-  * Created by Zhengfeng Yao on 16/8/24.
-  */
 import path from 'path';
 import webpack from 'webpack';
 import extend from 'extend';
@@ -85,7 +82,7 @@ const config = {
         test: /\.(woff\d?|ttf|eot)(\?.*)?$/,
         loader: 'file-loader',
       }, {
-        test: /\.est$/,
+        test: /\.tpl/,
         loader: 'babel-loader!template-string-loader'
       }
     ],

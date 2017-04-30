@@ -1,3 +1,10 @@
+/**
+ * fetchDataForRoutes module.
+ *
+ * isomorphic module to get the property `fetchData` in the route config
+ * and make the request if necessary.
+ *
+ * */
 import _ from 'lodash';
 
 const defaultFetchData = [];

@@ -1,6 +1,3 @@
-/**
-  * Created by Zhengfeng Yao on 16/8/24.
-  */
 import Browsersync from 'browser-sync';
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-middleware';

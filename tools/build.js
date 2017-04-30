@@ -1,6 +1,3 @@
-/**
-  * Created by Zhengfeng Yao on 16/8/24.
-  */
 import run from './run';
 import clean from './clean';
 import copy from './copy';

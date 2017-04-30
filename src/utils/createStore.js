@@ -1,20 +1,32 @@
-/**
- * Created by Zhengfeng Yao on 16/8/27.
- */
- import { createStore, applyMiddleware, compose } from 'redux';
- import createLogger from 'redux-logger';
- import thunk from 'redux-thunk';
+import thunk from 'redux-thunk';
+import createLogger from 'redux-logger';
 import { routerMiddleware } from 'react-router-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 
- import DevTools from '../devtools';
+import DevTools from '../devtools';
 
+
+const middleware = [thunk];
+
+if (__DEV__) {
  const logger = createLogger();
- const middleware = [thunk, logger];
+  middleware.push(logger)
+}
+
  let store;
- if (__BROWSER__ && __DEV__) {
+ if (__BROWSER__) {
    store = (reducers, history, initialState) => createStore(reducers, initialState, compose(
      applyMiddleware(...middleware, routerMiddleware(history)),
-     (typeof window === 'object' && window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument())
+     (() => {
+       if (__DEV__) {
+         return (typeof window === 'object' && window.devToolsExtension
+                  ? window.devToolsExtension()
+                  : DevTools.instrument()
+         );
+       }
+       return f => f;
+     })()
+
    ));
  } else {
    store = history => applyMiddleware(...middleware, routerMiddleware(history))(createStore);

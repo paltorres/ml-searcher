@@ -1,6 +1,3 @@
-/**
-  * Created by Zhengfeng Yao on 16/8/24.
-  */
 import path from 'path';
 import cp from 'child_process';
 import webpackConfig from './webpack.config';

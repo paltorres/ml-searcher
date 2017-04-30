@@ -1,6 +1,3 @@
-/**
-  * Created by Zhengfeng Yao on 16/8/29.
-  */
 import run from './run';
 import path from 'path';
 import Server from 'karma/lib/server';

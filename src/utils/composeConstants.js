@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 export default function composeConstants(obj, prefix) {
   if (obj.constructor == Object) {
     Object.keys(obj).forEach(key => {

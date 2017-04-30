@@ -40,7 +40,7 @@ const config = {
         test: /\.(woff\d?|ttf|eot|svg|jpe?g|png|gif|txt)(\?.*)?$/,
         loader: 'null-loader',
       }, {
-        test: /\.est$/,
+        test: /\.tpl/,
         loader: 'babel-loader!template-string-loader'
       }
     ],

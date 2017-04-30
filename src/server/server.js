@@ -6,12 +6,11 @@ import path from 'path';
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
-import http from 'http';
-import PrettyError from 'pretty-error';
 import gzip from 'compression';
 import helmet from 'helmet';
 
 import assets from './assets';
+// json5 loader
 import userConfig from '../config.json5';
 import renderViews from './renderViews';
 import initApi from './api';
@@ -29,6 +28,7 @@ const config = Object.assign({
 const server = global.server = new express();
 
 server.use(express.static(path.join(__dirname, 'public')));
+// middlewares
 server.use(cookieParser());
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
@@ -38,7 +38,13 @@ server.use(helmet());
 
 server.config = config;
 
+// set the api calls
 initApi(server, '/api');
+
+
+/**
+ * Turn on the magic
+ * */
 renderViews(server);
 
 server.listen(config.port, () => {

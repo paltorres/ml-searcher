@@ -78,8 +78,7 @@ if (__DEV__) {
 render();
 
 /**
- * Helper function to run the fetchData function required per route.
- *
+ * Helper function to run the fetchDataForRoutes function required per route.
  * */
 function onUpdate() {
   if (window.__INITIAL_STATE__ !== null) {

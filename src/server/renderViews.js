@@ -11,7 +11,7 @@ import DevTools from '../devtools';
 
 
 function render(config) {
-  return require(`./views/default.est`)(config);
+  return require('./views/index.tpl')(config);
 }
 
 export default function init(server) {

@@ -1,6 +1,3 @@
-/**
-  * Created by Zhengfeng Yao on 16/8/29.
-  */
 import webpackConfig from './webpack.config.test';
 
 module.exports = config => {
