@@ -1,6 +1,0 @@
-{
-  host: 'localhost',
-  port: 3000,
-  hostname: 'localhost:3000',
-  title: 'Buscador de productos!'
-}

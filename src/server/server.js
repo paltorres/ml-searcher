@@ -11,7 +11,7 @@ import helmet from 'helmet';
 
 import assets from './assets';
 // json5 loader
-import userConfig from '../config.json5';
+import userConfig from '../config';
 import renderViews from './renderViews';
 import initApi from './api';
 
