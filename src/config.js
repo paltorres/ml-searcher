@@ -1,12 +1,9 @@
 const config = {
   host: process.env.HOSTNAME || 'localhost',
   port: process.env.PORT || 3000,
-  hostname: hostName(),
   title: 'Buscador de productos!'
 };
 
-export default config;
+config['hostname'] = `${config.host}:${config.port}`;
 
-function hostName() {
-  return `${config.host}:${config.port}`;
-}
+export default config;
