@@ -138,7 +138,7 @@
     "pm2monit": "pm2 monit",
     "release": "babel-node tools/run build --release",
     "restart": "pm2 restart process.json",
-    "start": "pm2 start process.json",
+    "start": "npm run release && node ./build/server.js",
     "start:dev": "babel-node tools/run start",
     "stop": "pm2 stop process.json",
     "test": "babel-node tools/run test",
