@@ -6,7 +6,7 @@ import _ from 'lodash';
 import fetch from 'node-fetch';
 
 import { MELI_ITEMS_URL } from '../constants';
-import { getPriceObject } from '../utils';
+import { getPriceObject, getInDeep } from '../utils';
 import { HTTP_STATUS_NOT_FOUND } from '../../constants/http';
 
 /**
@@ -61,13 +61,13 @@ export default function getItemByID(itemId, cb) {
   });
 };
 
-// parser functions
-function parseItemData(data) {
-  const {id, title, thumbnail, condition, sold_quantity} = data,
-    free_shipping = _.get(data, 'shipping.free_shipping'),
-    price = getPriceObject(data);
 
-  return {id, title, price, condition, free_shipping, sold_quantity, picture: thumbnail}
+// parser functions
+const fieldsMapping = ['id', 'title', 'condition', 'shipping.free_shipping',
+                      {thumbnail: 'picture'}, 'sold_quantity',
+                      {price: getPriceObject}];
+function parseItemData(data) {
+  return getInDeep(data, ...fieldsMapping);
 }
 
 function parseDescription(data) {

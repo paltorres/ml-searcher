@@ -8,7 +8,7 @@ import _ from 'lodash';
 import { stringify } from 'querystring';
 import fetch from 'node-fetch';
 
-import { getPriceObject } from '../utils';
+import { getPriceObject, getInDeep } from '../utils';
 
 
 /**
@@ -44,52 +44,40 @@ import { getPriceObject } from '../utils';
  *
  * */
 
-let mock;
 
 export default function searchItems(q, cb) {
   if (!q) return cb(null, {result: [], categories: []});
-
-  if(false) {
-    return cb(null, mock);
-  }
 
   fetch(MELI_ROOT_URL + 'search?'+ stringify({q, limit: PRODUCT_LIMIT})).then((response) => {
     return response.json();
   }).then((jsonResponse) => {
     parseResponse(jsonResponse, cb);
+    // parseResponse(jsonResponse, cb);
   }).catch(() => {
     cb({error: {message: 'MELI Api error'}});
   });
 };
 
-// parse function
+
+// parser functions
+const fieldsMapping = ['id', 'title', 'condition', 'shipping.free_shipping',
+                        {thumbnail: 'picture'}, {'address.state_name': 'address'},
+                        {price: getPriceObject}];
 function parseResponse(data, cb) {
   const result = {};
+  result.items = getInDeep(data.results, ...fieldsMapping);
 
-  try {
-    result.items = _.map(data.results, (item) => {
-      const {id, title, thumbnail, condition, shipping} = item,
-        price = getPriceObject(item),
-        { free_shipping } = shipping,
-        address = _.get(item, 'address.state_name');
+  let categoriesList = _.find(data.filters, {id: 'category'});
 
-      return {id, title, condition, free_shipping, address, picture: thumbnail, price };
-    });
+  if (_.isObject(categoriesList)) {
+    let categoryFilter = _.get(_.find(categoriesList.values, 'path_from_root'), 'path_from_root');
 
-    var categoriesList = _.find(data.filters, {id: 'category'});
-
-    if (_.isObject(categoriesList)) {
-      let categoryFilter = _.get(_.find(categoriesList.values, 'path_from_root'), 'path_from_root');
-
-      categoriesList = _.map(categoryFilter, 'name');
-    }
-
-    result.categories = categoriesList || [];
-
-    mock = result;
-    cb(null, result);
-  } catch (e) {
-    console.error(e);
-    cb({error: {message: 'Error parsing response'}})
+    categoriesList = _.map(categoryFilter, 'name');
   }
+
+  result.categories = categoriesList || [];
+
+  Promise.resolve().then(() => {
+    cb(null, result);
+  });
 }
