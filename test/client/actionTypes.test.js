@@ -1,10 +1,10 @@
 /**
   * Created by Zhengfeng Yao on 16/8/29.
   */
-import { APP } from 'src/actionTypes';
+import { SERVICES } from 'src/actionTypes';
 
-describe('appEnvConfigTests', () => {
+describe('servicesEnvConfigTests', () => {
   it('test actionTypes', () => {
-    expect(APP.INIT).to.equal('APP.INIT');
+    expect(SERVICES.SEARCHED_ITEMS).to.equal('SERVICES.SEARCHED_ITEMS');
   });
 });
