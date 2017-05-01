@@ -1,6 +1,6 @@
 {
-  "name": "react-redux-express",
-  "description": ".",
+  "name": "ml-searcher",
+  "description": "React-redux example project, with server side rendering.",
   "version": "0.0.1",
   "dependencies": {
     "accounting-js": "^1.1.1",
