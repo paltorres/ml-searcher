@@ -9,7 +9,6 @@ import { IndexLink } from 'react-router'
 import _ from 'lodash';
 
 import searchItems from './actions';
-import './searchBar.less'
 import SearchForm from './Form';
 
 

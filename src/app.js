@@ -1,7 +1,7 @@
 import React from 'react';
 
 import SearchBar from './components/SearchBar';
-import cc from './common.less';
+import cc from './styles/main.less';
 
 
 export default function App({children}) {

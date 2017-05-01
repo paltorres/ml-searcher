@@ -1,0 +1,25 @@
+@import (less) "~normalize.css";
+@import "~font-awesome/less/font-awesome.less";
+@import "~bootstrap/less/bootstrap.less";
+
+@import "helpers/variables";
+@import "helpers/overrides";
+
+@import "../components/Breadcrumb/breadcrumb";
+// @import "../components/Price/price";
+@import "../components/SearchBar/searchBar";
+@import "../features/Searcher/features/Detail/item_detail";
+@import "../features/Searcher/features/Result/components/item";
+@import "../features/Searcher/features/Result/search_result";
+/*
+@yellow: #FFE600;
+@application-bg: #EEEEEE;
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  background-color: @application-bg;
+}

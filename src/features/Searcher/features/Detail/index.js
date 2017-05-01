@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 
 import Price from '../../../../components/Price';
-import './item_detail.less';
 
 
 class ItemDetail extends Component {
