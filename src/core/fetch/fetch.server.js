@@ -1,6 +1,3 @@
-/**
-  * Created by Zhengfeng Yao on 16/8/24.
-  */
 import Promise from 'bluebird';
 import fetch, { Request, Headers, Response } from 'node-fetch';
 import { hostname } from '../../config';

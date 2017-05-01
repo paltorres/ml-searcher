@@ -1,6 +1,3 @@
-/**
-  * Created by Zhengfeng Yao on 16/8/24.
-  */
 import 'babel-polyfill';
 import path from 'path';
 import express from 'express';
