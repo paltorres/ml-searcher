@@ -12,13 +12,13 @@
     <meta property="twitter:title" content="Pablo Torres" />
     <meta name="referrer" content="origin">
 
-    <link rel="stylesheet" type="text/css" href="//${scope.hostname}${scope.assets.client.css}"/>
-    <script src="//${scope.hostname}${scope.assets.core.js}"></script>
-    <script src="//${scope.hostname}${scope.assets.lib.js}"></script>
+    <link rel="stylesheet" type="text/css" href="${scope.assets.client.css}"/>
+    <script src="${scope.assets.core.js}"></script>
+    <script src="${scope.assets.lib.js}"></script>
   </head>
   <body>
     <div id="content">${scope.markup || ''}</div>
     <script>window.__INITIAL_STATE__ = ${JSON.stringify(scope.initialState)}</script>
-    <script src="//${scope.hostname}${scope.assets.client.js}"></script>
+    <script src="${scope.assets.client.js}"></script>
   </body>
 </html>

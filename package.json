@@ -120,9 +120,10 @@
     "clean": "babel-node tools/run clean",
     "copy": "babel-node tools/run copy",
     "release": "babel-node tools/run build --release",
-    "start": "npm run release && node ./build/server.js",
+    "start": "node ./build/server.js",
     "start:dev": "babel-node tools/run start",
     "test": "babel-node tools/run test",
-    "test:watch": "babel-node tools/run test --watch --detail"
+    "test:watch": "babel-node tools/run test --watch --detail",
+    "postinstall": "npm run release"
   }
 }
