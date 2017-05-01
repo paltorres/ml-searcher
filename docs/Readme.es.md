@@ -12,6 +12,7 @@ Se utilizo el generador [generator-react-redux-express](https://github.com/hihl/
 
 React Server side rendering es implementado en este proyecto.
 
+[Estilo de codigo](https://github.com/airbnb/javascript/tree/master/react)
 
 ## Estructura de directorios
 
