@@ -21,3 +21,7 @@ To develop run:
 To production mode run:
 
 ```$ npm start```
+
+## Heroku example
+
+https://ml-searcher.herokuapp.com/
