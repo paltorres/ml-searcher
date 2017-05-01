@@ -4,6 +4,8 @@ const config = {
   title: 'Buscador de productos!'
 };
 
-config['hostname'] = `${config.host}:${config.port}`;
+const hostname = `${config.host}:${config.port}`;
+config['hostname'] = hostname;
 
 export default config;
+export { hostname };

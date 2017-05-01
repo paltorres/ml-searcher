@@ -2,6 +2,7 @@ import Promise from 'bluebird';
 import fetch, { Request, Headers, Response } from 'node-fetch';
 import { hostname } from '../../config';
 
+
 fetch.Promise = Promise;
 Response.Promise = Promise;
 

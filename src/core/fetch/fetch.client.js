@@ -1,6 +1,3 @@
-/**
-  * Created by Zhengfeng Yao on 16/8/24.
-  */
 import 'whatwg-fetch';
 
 export default self.fetch.bind(self);
